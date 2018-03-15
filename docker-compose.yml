@@ -31,8 +31,6 @@ services:
     environment:
       SENTINEL_DOWN_AFTER: 5000
       SENTINEL_FAILOVER: 5000
-      MASTER_IP: 172.31.20.15
-      MASTER_PORT: 6380
       TZ: Asia/Shanghai
     links:
       - master
