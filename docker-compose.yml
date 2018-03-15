@@ -25,16 +25,14 @@ services:
       - /data/redis_slave_2:/data
     command: redis-server --port 6382 --appendonly yes --slaveof 172.31.20.15 6380
   sentinel:
-    build: 
-      context: sentinel
-      args:
-        MASTER_IP: 172.31.20.15
-        MASTER_PORT: 6380
+    build: sentinel
     ports:
       - "26379"
     environment:
       SENTINEL_DOWN_AFTER: 5000
       SENTINEL_FAILOVER: 5000
+      MASTER_IP: 172.31.20.15
+      MASTER_PORT: 6380
       TZ: Asia/Shanghai
     links:
       - master
